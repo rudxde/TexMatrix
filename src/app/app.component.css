@@ -1,0 +1,17 @@
+textarea {
+    width: 100%;
+    min-height: 200px;
+}
+
+.gridcontainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+}
+
+.gridelement {
+    width: 1fr;
+}
+
+.gridelement>input {
+    width: 100%;
+}

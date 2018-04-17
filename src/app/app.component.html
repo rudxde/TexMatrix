@@ -1,0 +1,20 @@
+<div class="card">
+    <h1>TexMatrix</h1>
+    <a href="https://github.com/rudxde/TexMatrix">https://github.com/rudxde/TexMatrix</a>
+    <p> <br /> </p>
+    Rows:
+    <input [(ngModel)]="row" (keyup)="changeSize()"> Cols:
+    <input [(ngModel)]="cols" (keyup)="changeSize()">
+</div>
+
+<div class="card">
+    <span *ngFor="let colums of Matrix, let a = index" class="gridcontainer">
+      <span *ngFor="let element of colums, let b = index; trackBy:trackByFn" class="gridelement">
+          <input [(ngModel)]="Matrix[a][b]"  (change)="updateView()">
+      </span>
+    <br />
+    </span>
+</div>
+<div class="card">
+    <textarea [ngModel]="result"></textarea>
+</div>
