@@ -6,6 +6,15 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
+pr:
+  branches:
+    include:
+      - dev
+      - master
+  paths:
+    exclude:
+    - README.md
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -14,5 +23,13 @@ steps:
 
 - script: |
     npm install
+  displayName: 'npm install'
+
+- script: |
     npm run build
-  displayName: 'npm install, ng build'
+  displayName: 'build'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: drop
