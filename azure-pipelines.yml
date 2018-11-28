@@ -45,3 +45,5 @@ steps:
     connectionType: PublishProfile
     publishProfilePath: '$(Build.BinariesDirectory)/test-20181126.pubxml'
     package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    publishProfilePassword : 'rPik39XQa9lJFuCSctuStH7ja3k8NzoSAshHejwKAofku6pmduyBF3kYx8BW'
+    appType: 'webApp'
