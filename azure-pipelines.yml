@@ -26,7 +26,8 @@ steps:
   displayName: 'build'
 
 - script: |
-    echo $(Build.BinariesDirectory)
+    cd $(Build.BinariesDirectory)
+    ls
 
 - task: ArchiveFiles@2
   inputs:
@@ -37,7 +38,7 @@ steps:
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'artifact $(Build.BuildId)'
-    targetPath: '$(Build.BinariesDirectory)/'
+    targetPath: '/'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
