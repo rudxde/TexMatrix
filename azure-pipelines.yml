@@ -27,9 +27,9 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)/dist/' 
+    rootFolderOrFile: '$(Build.BinariesDirectory)/dist/'
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip' 
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
 
 - task: PublishPipelineArtifact@0
   inputs:
@@ -40,3 +40,4 @@ steps:
   inputs:
     connectionType: PublishProfile
     publishProfilePath: '$(Build.BinariesDirectory)/test-20181126.pubxml'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
