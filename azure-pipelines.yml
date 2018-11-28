@@ -25,25 +25,21 @@ steps:
     npm run build
   displayName: 'build'
 
-- script: |
-    cd $(Build.BinariesDirectory)
-    ls
-
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: 'dist/'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/'
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
 
 - task: PublishPipelineArtifact@0
   inputs:
     artifactName: 'artifact $(Build.BuildId)'
-    targetPath: 'dist/'
+    targetPath: '$(System.DefaultWorkingDirectory)/dist/'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
     connectionType: PublishProfile
-    publishProfilePath: '/test-20181126.pubxml'
+    publishProfilePath: '$(System.DefaultWorkingDirectory)/test-20181126.pubxml'
     package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     publishProfilePassword : 'rPik39XQa9lJFuCSctuStH7ja3k8NzoSAshHejwKAofku6pmduyBF3kYx8BW'
     appType: 'webApp'
