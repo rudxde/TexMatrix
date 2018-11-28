@@ -7,10 +7,6 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 pr:
-  branches:
-    include:
-      - dev
-      - master
   paths:
     exclude:
     - README.md
@@ -29,7 +25,7 @@ steps:
     npm run build
   displayName: 'build'
 
-- task: PublishBuildArtifacts@1
+- task: PublishPipelineArtifact@0
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: drop
+    artifactName: 'artifactName'
+    targetPath: 'dist/'
